@@ -1,0 +1,14 @@
+syntax = "proto3";
+package main;
+option go_package = "../protobuf/protogen";
+
+import "user.proto";
+
+service Main {
+    rpc GetUser (user.GetUserRequest) returns (user.UserResponse);
+    rpc StoreUserRequest (user.StoreUserRequest) returns (Empty);
+}
+
+
+message Empty {
+}
