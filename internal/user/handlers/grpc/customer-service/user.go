@@ -1,4 +1,4 @@
-package grpc
+package customerService
 
 import (
 	"context"
@@ -10,8 +10,8 @@ type CustomerService struct {
 	client protogen.MainClient
 }
 
-func NewCustomerService() *CustomerService {
-	return &CustomerService{}
+func NewCustomerService(client protogen.MainClient) *CustomerService {
+	return &CustomerService{client: client}
 }
 
 func (s *CustomerService) GetUser(ctx context.Context, req *protogen.GetUserRequest) (*protogen.UserResponse, error) {

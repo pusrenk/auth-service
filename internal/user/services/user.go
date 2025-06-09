@@ -5,7 +5,7 @@ import (
 
 	"github.com/pusrenk/auth-service/internal/protobuf/protogen"
 	"github.com/pusrenk/auth-service/internal/user/entities"
-	"github.com/pusrenk/auth-service/internal/user/handlers/grpc"
+	"github.com/pusrenk/auth-service/internal/user/handlers/grpc/customerService"
 	"github.com/pusrenk/auth-service/internal/user/repositories/redis"
 	"github.com/pusrenk/auth-service/pkg/helpers"
 )
@@ -16,7 +16,7 @@ type UserService interface {
 }
 
 type userService struct {
-	customerService grpc.CustomerService
+	customerService customerService.CustomerService
 	userRedisRepository redis.UserRedisRepository 
 }
 
