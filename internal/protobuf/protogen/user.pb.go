@@ -133,27 +133,27 @@ func (x *BaseUser) GetRole() string {
 	return ""
 }
 
-type StoreUserRequest struct {
+type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *BaseUser              `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *StoreUserRequest) Reset() {
-	*x = StoreUserRequest{}
+func (x *CreateUserRequest) Reset() {
+	*x = CreateUserRequest{}
 	mi := &file_user_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *StoreUserRequest) String() string {
+func (x *CreateUserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StoreUserRequest) ProtoMessage() {}
+func (*CreateUserRequest) ProtoMessage() {}
 
-func (x *StoreUserRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -165,12 +165,12 @@ func (x *StoreUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StoreUserRequest.ProtoReflect.Descriptor instead.
-func (*StoreUserRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
+func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *StoreUserRequest) GetUser() *BaseUser {
+func (x *CreateUserRequest) GetUser() *BaseUser {
 	if x != nil {
 		return x.User
 	}
@@ -233,8 +233,8 @@ const file_user_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x12\x12\n" +
-	"\x04role\x18\x04 \x01(\tR\x04role\"6\n" +
-	"\x10StoreUserRequest\x12\"\n" +
+	"\x04role\x18\x04 \x01(\tR\x04role\"7\n" +
+	"\x11CreateUserRequest\x12\"\n" +
 	"\x04user\x18\x01 \x01(\v2\x0e.user.BaseUserR\x04user\"2\n" +
 	"\fUserResponse\x12\"\n" +
 	"\x04user\x18\x01 \x01(\v2\x0e.user.BaseUserR\x04userB\x16Z\x14../protobuf/protogenb\x06proto3"
@@ -253,13 +253,13 @@ func file_user_proto_rawDescGZIP() []byte {
 
 var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_user_proto_goTypes = []any{
-	(*GetUserRequest)(nil),   // 0: user.GetUserRequest
-	(*BaseUser)(nil),         // 1: user.BaseUser
-	(*StoreUserRequest)(nil), // 2: user.StoreUserRequest
-	(*UserResponse)(nil),     // 3: user.UserResponse
+	(*GetUserRequest)(nil),    // 0: user.GetUserRequest
+	(*BaseUser)(nil),          // 1: user.BaseUser
+	(*CreateUserRequest)(nil), // 2: user.CreateUserRequest
+	(*UserResponse)(nil),      // 3: user.UserResponse
 }
 var file_user_proto_depIdxs = []int32{
-	1, // 0: user.StoreUserRequest.user:type_name -> user.BaseUser
+	1, // 0: user.CreateUserRequest.user:type_name -> user.BaseUser
 	1, // 1: user.UserResponse.user:type_name -> user.BaseUser
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type

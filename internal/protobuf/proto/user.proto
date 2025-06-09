@@ -13,7 +13,7 @@ message BaseUser {
     string role = 4;
 }
 
-message StoreUserRequest {
+message CreateUserRequest {
     BaseUser user = 1;
 }
 

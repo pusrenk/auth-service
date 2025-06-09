@@ -6,7 +6,7 @@ import "user.proto";
 
 service Main {
     rpc GetUser (user.GetUserRequest) returns (user.UserResponse);
-    rpc StoreUserRequest (user.StoreUserRequest) returns (Empty);
+    rpc CreateUser (user.CreateUserRequest) returns (Empty);
 }
 
 
