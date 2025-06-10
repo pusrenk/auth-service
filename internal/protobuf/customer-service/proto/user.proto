@@ -1,6 +1,6 @@
 syntax = "proto3";
 package user;
-option go_package = "../protobuf/protogen";
+option go_package = "../customer-service/protogen";
 
 message GetUserRequest {
     string id = 1;

@@ -1,14 +1,13 @@
 syntax = "proto3";
-package main;
-option go_package = "../protobuf/protogen";
+package customerrpc;
+option go_package = "../customer-service/protogen";
 
 import "user.proto";
 
-service Main {
+service CustomerRpc {
     rpc GetUser (user.GetUserRequest) returns (user.UserResponse);
     rpc CreateUser (user.CreateUserRequest) returns (Empty);
 }
-
 
 message Empty {
 }
