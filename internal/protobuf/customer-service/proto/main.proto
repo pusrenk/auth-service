@@ -1,0 +1,13 @@
+syntax = "proto3";
+package customerrpc;
+option go_package = "../customer-service/protogen";
+
+import "user.proto";
+
+service CustomerRpc {
+    rpc GetUser (user.GetUserRequest) returns (user.UserResponse);
+    rpc CreateUser (user.CreateUserRequest) returns (Empty);
+}
+
+message Empty {
+}
