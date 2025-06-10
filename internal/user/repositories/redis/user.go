@@ -4,9 +4,10 @@ import (
 	"context"
 	"encoding/json"
 
+	"github.com/redis/go-redis/v9"
+
 	"github.com/pusrenk/auth-service/internal/user/entities"
 	"github.com/pusrenk/auth-service/pkg/helpers"
-	"github.com/redis/go-redis/v9"
 )
 
 type UserRedisRepository interface {

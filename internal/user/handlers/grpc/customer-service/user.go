@@ -1,23 +1,23 @@
-package customerService
+package rpc
 
 import (
 	"context"
 
-	"github.com/pusrenk/auth-service/internal/protobuf/protogen"
+	"github.com/pusrenk/auth-service/internal/protobuf/customer-service/protogen"
 )
 
 type CustomerService struct {
-	client protogen.MainClient
+	customerRpcClient protogen.CustomerRpcClient
 }
 
-func NewCustomerService(client protogen.MainClient) *CustomerService {
-	return &CustomerService{client: client}
+func NewCustomerService(customerRpcClient protogen.CustomerRpcClient) *CustomerService {
+	return &CustomerService{customerRpcClient: customerRpcClient}
 }
 
 func (s *CustomerService) GetUser(ctx context.Context, req *protogen.GetUserRequest) (*protogen.UserResponse, error) {
-	return s.client.GetUser(ctx, req)
+	return s.customerRpcClient.GetUser(ctx, req)
 }
 
 func (s *CustomerService) CreateUser(ctx context.Context, req *protogen.CreateUserRequest) (*protogen.Empty, error) {
-	return s.client.CreateUser(ctx, req)
+	return s.customerRpcClient.CreateUser(ctx, req)
 }
