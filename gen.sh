@@ -13,7 +13,7 @@ popd () { builtin popd > /dev/null ; }
 
 echo "--- Generating protobuf files"
 
-pushd internal/protobuf/proto
+pushd internal/protobuf/customer-service/proto
   protoc -I . --go_out=.. --go-grpc_out=.. *.proto
 popd
 
