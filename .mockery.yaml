@@ -1,0 +1,12 @@
+with-expecter: true
+mockname: "{{.InterfaceName}}Mock"
+filename: "{{.MockName}}.go"
+outpkg: mocks
+dir: "test/mocks"
+packages:
+  github.com/pusrenk/auth-service/internal/user/services:
+    interfaces:
+      UserService:
+  github.com/pusrenk/auth-service/internal/user/repositories:
+    interfaces:
+      UserRedisRepository: 
