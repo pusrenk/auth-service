@@ -1,5 +1,5 @@
 syntax = "proto3";
-package main;
+package customerrpc;
 option go_package = "../protobuf/protogen";
 
 import "user.proto";
@@ -8,7 +8,6 @@ service Main {
     rpc GetUserBySessionID (user.GetUserBySessionIDRequest) returns (user.UserResponse);
     rpc StoreUserSession (user.StoreUserSessionRequest) returns (Empty);
 }
-
 
 message Empty {
 }

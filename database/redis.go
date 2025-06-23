@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/pusrenk/auth-service/configs"
 	"github.com/redis/go-redis/v9"
+
+	"github.com/pusrenk/auth-service/configs"
 )
 
 func InitRedis(cfg *configs.Config) (*redis.Client, error) {
@@ -18,7 +19,7 @@ func InitRedis(cfg *configs.Config) (*redis.Client, error) {
 		Password: cfg.Redis.Password,
 		DB:       cfg.Redis.Database,
 	})
-	
+
 	// test connection before returning
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()

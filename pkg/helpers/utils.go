@@ -8,12 +8,12 @@ import (
 )
 
 const (
-	Development = "development"
-	Production  = "production"
-	SessionExpiry = 24 * time.Hour // 24 hours
+	Development         = "development"
+	Production          = "production"
+	SessionExpiry       = 24 * time.Hour // 24 hours
 	CustomerServiceHost = "localhost"
 	CustomerServicePort = "50051"
-	UserRole = "user"
+	UserRole            = "user"
 )
 
 var (

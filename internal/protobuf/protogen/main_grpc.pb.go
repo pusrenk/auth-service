@@ -19,8 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Main_GetUserBySessionID_FullMethodName = "/main.Main/GetUserBySessionID"
-	Main_StoreUserSession_FullMethodName   = "/main.Main/StoreUserSession"
+	Main_GetUserBySessionID_FullMethodName = "/customerrpc.Main/GetUserBySessionID"
+	Main_StoreUserSession_FullMethodName   = "/customerrpc.Main/StoreUserSession"
 )
 
 // MainClient is the client API for Main service.
@@ -142,7 +142,7 @@ func _Main_StoreUserSession_Handler(srv interface{}, ctx context.Context, dec fu
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Main_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "main.Main",
+	ServiceName: "customerrpc.Main",
 	HandlerType: (*MainServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
