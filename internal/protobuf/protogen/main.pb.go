@@ -64,11 +64,10 @@ const file_main_proto_rawDesc = "" +
 	"\n" +
 	"main.proto\x12\x04main\x1a\n" +
 	"user.proto\"\a\n" +
-	"\x05Empty2o\n" +
-	"\x04Main\x123\n" +
-	"\aGetUser\x12\x14.user.GetUserRequest\x1a\x12.user.UserResponse\x122\n" +
-	"\n" +
-	"CreateUser\x12\x17.user.CreateUserRequest\x1a\v.main.EmptyB\x16Z\x14../protobuf/protogenb\x06proto3"
+	"\x05Empty2\x91\x01\n" +
+	"\x04Main\x12I\n" +
+	"\x12GetUserBySessionID\x12\x1f.user.GetUserBySessionIDRequest\x1a\x12.user.UserResponse\x12>\n" +
+	"\x10StoreUserSession\x12\x1d.user.StoreUserSessionRequest\x1a\v.main.EmptyB\x16Z\x14../protobuf/protogenb\x06proto3"
 
 var (
 	file_main_proto_rawDescOnce sync.Once
@@ -84,16 +83,16 @@ func file_main_proto_rawDescGZIP() []byte {
 
 var file_main_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_main_proto_goTypes = []any{
-	(*Empty)(nil),             // 0: main.Empty
-	(*GetUserRequest)(nil),    // 1: user.GetUserRequest
-	(*CreateUserRequest)(nil), // 2: user.CreateUserRequest
-	(*UserResponse)(nil),      // 3: user.UserResponse
+	(*Empty)(nil),                     // 0: main.Empty
+	(*GetUserBySessionIDRequest)(nil), // 1: user.GetUserBySessionIDRequest
+	(*StoreUserSessionRequest)(nil),   // 2: user.StoreUserSessionRequest
+	(*UserResponse)(nil),              // 3: user.UserResponse
 }
 var file_main_proto_depIdxs = []int32{
-	1, // 0: main.Main.GetUser:input_type -> user.GetUserRequest
-	2, // 1: main.Main.CreateUser:input_type -> user.CreateUserRequest
-	3, // 2: main.Main.GetUser:output_type -> user.UserResponse
-	0, // 3: main.Main.CreateUser:output_type -> main.Empty
+	1, // 0: main.Main.GetUserBySessionID:input_type -> user.GetUserBySessionIDRequest
+	2, // 1: main.Main.StoreUserSession:input_type -> user.StoreUserSessionRequest
+	3, // 2: main.Main.GetUserBySessionID:output_type -> user.UserResponse
+	0, // 3: main.Main.StoreUserSession:output_type -> main.Empty
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

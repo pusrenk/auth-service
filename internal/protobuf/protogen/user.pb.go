@@ -21,27 +21,27 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type GetUserRequest struct {
+type GetUserBySessionIDRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetUserRequest) Reset() {
-	*x = GetUserRequest{}
+func (x *GetUserBySessionIDRequest) Reset() {
+	*x = GetUserBySessionIDRequest{}
 	mi := &file_user_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetUserRequest) String() string {
+func (x *GetUserBySessionIDRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetUserRequest) ProtoMessage() {}
+func (*GetUserBySessionIDRequest) ProtoMessage() {}
 
-func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
+func (x *GetUserBySessionIDRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -53,12 +53,12 @@ func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetUserRequest.ProtoReflect.Descriptor instead.
-func (*GetUserRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetUserBySessionIDRequest.ProtoReflect.Descriptor instead.
+func (*GetUserBySessionIDRequest) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetUserRequest) GetId() string {
+func (x *GetUserBySessionIDRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
@@ -141,27 +141,27 @@ func (x *BaseUser) GetRole() string {
 	return ""
 }
 
-type CreateUserRequest struct {
+type StoreUserSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *BaseUser              `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateUserRequest) Reset() {
-	*x = CreateUserRequest{}
+func (x *StoreUserSessionRequest) Reset() {
+	*x = StoreUserSessionRequest{}
 	mi := &file_user_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateUserRequest) String() string {
+func (x *StoreUserSessionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateUserRequest) ProtoMessage() {}
+func (*StoreUserSessionRequest) ProtoMessage() {}
 
-func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
+func (x *StoreUserSessionRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -173,12 +173,12 @@ func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
-func (*CreateUserRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use StoreUserSessionRequest.ProtoReflect.Descriptor instead.
+func (*StoreUserSessionRequest) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CreateUserRequest) GetUser() *BaseUser {
+func (x *StoreUserSessionRequest) GetUser() *BaseUser {
 	if x != nil {
 		return x.User
 	}
@@ -234,16 +234,16 @@ var File_user_proto protoreflect.FileDescriptor
 const file_user_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"user.proto\x12\x04user\" \n" +
-	"\x0eGetUserRequest\x12\x0e\n" +
+	"user.proto\x12\x04user\"+\n" +
+	"\x19GetUserBySessionIDRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"|\n" +
 	"\bBaseUser\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x1a\n" +
 	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x14\n" +
 	"\x05email\x18\x04 \x01(\tR\x05email\x12\x12\n" +
-	"\x04role\x18\x05 \x01(\tR\x04role\"7\n" +
-	"\x11CreateUserRequest\x12\"\n" +
+	"\x04role\x18\x05 \x01(\tR\x04role\"=\n" +
+	"\x17StoreUserSessionRequest\x12\"\n" +
 	"\x04user\x18\x01 \x01(\v2\x0e.user.BaseUserR\x04user\"2\n" +
 	"\fUserResponse\x12\"\n" +
 	"\x04user\x18\x01 \x01(\v2\x0e.user.BaseUserR\x04userB\x16Z\x14../protobuf/protogenb\x06proto3"
@@ -262,13 +262,13 @@ func file_user_proto_rawDescGZIP() []byte {
 
 var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_user_proto_goTypes = []any{
-	(*GetUserRequest)(nil),    // 0: user.GetUserRequest
-	(*BaseUser)(nil),          // 1: user.BaseUser
-	(*CreateUserRequest)(nil), // 2: user.CreateUserRequest
-	(*UserResponse)(nil),      // 3: user.UserResponse
+	(*GetUserBySessionIDRequest)(nil), // 0: user.GetUserBySessionIDRequest
+	(*BaseUser)(nil),                  // 1: user.BaseUser
+	(*StoreUserSessionRequest)(nil),   // 2: user.StoreUserSessionRequest
+	(*UserResponse)(nil),              // 3: user.UserResponse
 }
 var file_user_proto_depIdxs = []int32{
-	1, // 0: user.CreateUserRequest.user:type_name -> user.BaseUser
+	1, // 0: user.StoreUserSessionRequest.user:type_name -> user.BaseUser
 	1, // 1: user.UserResponse.user:type_name -> user.BaseUser
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type

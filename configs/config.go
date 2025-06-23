@@ -10,13 +10,13 @@ import (
 
 var (
 	ConfigInstance *Config
-	once   sync.Once
+	once           sync.Once
 )
 
 type Config struct {
-	App AppConfig `json:"app" mapstructure:"app"`
+	App      AppConfig      `json:"app" mapstructure:"app"`
 	Database DatabaseConfig `json:"database" mapstructure:"database"`
-	Redis RedisConfig `json:"redis" mapstructure:"redis"`
+	Redis    RedisConfig    `json:"redis" mapstructure:"redis"`
 }
 
 type AppConfig struct {
@@ -27,19 +27,19 @@ type AppConfig struct {
 }
 
 type DBConfig struct {
-	Host string `json:"host" mapstructure:"host"`
-	Port int    `json:"port" mapstructure:"port"`
-	User string `json:"user" mapstructure:"user"`
+	Host     string `json:"host" mapstructure:"host"`
+	Port     int    `json:"port" mapstructure:"port"`
+	User     string `json:"user" mapstructure:"user"`
 	Password string `json:"password" mapstructure:"password"`
 }
 
 type DatabaseConfig struct {
 	DBConfig
-	Database string `json:"database" mapstructure:"database"`
+	Database        string        `json:"database" mapstructure:"database"`
 	ConnMaxIdleTime time.Duration `json:"conn_max_idle_time" mapstructure:"conn_max_idle_time"`
 	ConnMaxLifetime time.Duration `json:"conn_max_lifetime" mapstructure:"conn_max_lifetime"`
-	MaxIdleConns int `json:"max_idle_conns" mapstructure:"max_idle_conns"`
-	MaxOpenConns int `json:"max_open_conns" mapstructure:"max_open_conns"`
+	MaxIdleConns    int           `json:"max_idle_conns" mapstructure:"max_idle_conns"`
+	MaxOpenConns    int           `json:"max_open_conns" mapstructure:"max_open_conns"`
 }
 
 type RedisConfig struct {
@@ -54,6 +54,10 @@ func GetConfig() *Config {
 
 // load config from env.json file
 func loadConfig(config *Config) {
+	if ConfigInstance == nil {
+		panic(fmt.Errorf("config not initialized"))
+	}
+
 	viper.SetConfigName("env")
 	viper.SetConfigType("json")
 	viper.AddConfigPath("./configs")
