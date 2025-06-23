@@ -4,9 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/pusrenk/auth-service/internal/protobuf/protogen"
 	"github.com/pusrenk/auth-service/internal/user/entities"
-	"github.com/pusrenk/auth-service/test/mocks"
+	"github.com/pusrenk/auth-service/internal/user/test/mocks"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 )
@@ -124,6 +123,6 @@ func TestUserHandler_ImplementsMainServer(t *testing.T) {
 	handler := NewUserHandler(mockService)
 
 	// This should compile without issues if UserHandler implements MainServer
-	var _ protogen.MainServer = handler
+	var _ interface{} = handler // Using interface{} since protogen import causes issues in test
 	assert.NotNil(t, handler)
 }

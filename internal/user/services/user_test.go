@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/pusrenk/auth-service/internal/user/entities"
-	"github.com/pusrenk/auth-service/test/mocks"
+	"github.com/pusrenk/auth-service/internal/user/test/mocks"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 )
