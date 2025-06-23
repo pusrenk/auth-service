@@ -9,7 +9,7 @@ BINARY_NAME=auth-service
 BINARY_UNIX=$(BINARY_NAME)_unix
 
 # Development commands
-.PHONY: run build clean test test-coverage test-race test-short deps mocks proto
+.PHONY: run build clean test test-coverage test-race test-short deps mocks proto gen fmt add-domain
 
 # Build the application
 build:
@@ -60,14 +60,28 @@ mocks:
 mocks-config:
 	mockery
 
-# Generate protobuf files
+# Generate protobuf files (from gen.sh)
 proto:
-	protoc --go_out=. --go_opt=paths=source_relative \
-		--go-grpc_out=. --go-grpc_opt=paths=source_relative \
-		internal/protobuf/proto/*.proto
+	@echo "--- Generating protobuf files"
+	cd internal/protobuf/proto && protoc -I . --go_out=.. --go-grpc_out=.. *.proto
 
-# Format code
+# Generate protobuf files and format (equivalent to gen.sh)
+gen: proto fmt
+	@echo "--- Generation complete"
+
+# Format code with goimports (from fmt.sh)
 fmt:
+	@if command -v goimports >/dev/null 2>&1; then \
+		echo "Using goimports for formatting..."; \
+		goimports -w -local github.com/pusrenk/auth-service .; \
+	else \
+		echo "goimports not found, using go fmt instead..."; \
+		echo "Install goimports with: go install golang.org/x/tools/cmd/goimports@latest"; \
+		$(GOCMD) fmt ./...; \
+	fi
+
+# Format code with go fmt
+go-fmt:
 	$(GOCMD) fmt ./...
 
 # Lint code (requires golangci-lint)
@@ -79,6 +93,18 @@ install-tools:
 	$(GOCMD) install github.com/vektra/mockery/v2@latest
 	$(GOCMD) install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	$(GOCMD) install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+	$(GOCMD) install golang.org/x/tools/cmd/goimports@latest
+
+# Domain management - Add new domain
+add-domain:
+	@if [ -z "$(DOMAIN)" ]; then \
+		echo "Usage: make add-domain DOMAIN=<domain_name>"; \
+		echo "Example: make add-domain DOMAIN=product"; \
+		exit 1; \
+	fi
+	@echo "Adding domain: $(DOMAIN)"
+	@powershell -ExecutionPolicy Bypass -File scripts/add-domain.ps1 -DomainName $(DOMAIN)
+	@echo "Don't forget to run 'make mocks-config' to generate the mocks!"
 
 # Docker commands
 docker-build:
@@ -102,9 +128,12 @@ help:
 	@echo "  mocks          - Generate all mocks"
 	@echo "  mocks-config   - Generate mocks from config"
 	@echo "  proto          - Generate protobuf files"
-	@echo "  fmt            - Format code"
+	@echo "  gen            - Generate protobuf files and format (replaces gen.sh)"
+	@echo "  fmt            - Format code with goimports (replaces fmt.sh)"
+	@echo "  go-fmt         - Format code with go fmt"
 	@echo "  lint           - Lint code"
 	@echo "  install-tools  - Install development tools"
+	@echo "  add-domain     - Add new domain (Usage: make add-domain DOMAIN=product)"
 	@echo "  docker-build   - Build Docker image"
 	@echo "  docker-run     - Run Docker container"
 	@echo "  help           - Show this help message"

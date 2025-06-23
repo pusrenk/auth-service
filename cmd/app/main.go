@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"strconv"
 
 	"github.com/pusrenk/auth-service/cmd/server"
 	"github.com/pusrenk/auth-service/configs"
@@ -20,7 +21,7 @@ func main() {
 	}
 
 	// Start server
-	if err := srv.Start("50051"); err != nil {
+	if err := srv.Start(strconv.Itoa(cfg.App.Port)); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
 }
