@@ -1,0 +1,16 @@
+# TODO: need to find way so dont need to add the app name over and over again
+with-expecter: true
+mockname: "{{.InterfaceName}}Mock"
+filename: "{{.MockName}}.go"
+outpkg: mocks
+
+packages:
+  github.com/pusrenk/auth-service/internal/user/services:
+    interfaces:
+      UserService:
+        dir: "internal/user/test/mocks"
+  
+  github.com/pusrenk/auth-service/internal/user/repositories:
+    interfaces:
+      UserRedisRepository:
+        dir: "internal/user/test/mocks"

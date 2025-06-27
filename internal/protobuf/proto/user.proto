@@ -1,0 +1,23 @@
+syntax = "proto3";
+package user;
+option go_package = "../protobuf/protogen";
+
+message GetUserBySessionIDRequest {
+    string id = 1;
+}
+
+message BaseUser {
+    string id = 1;
+    string username = 2;
+    string password = 3;
+    string email = 4;
+    string role = 5;
+}
+
+message StoreUserSessionRequest {
+    BaseUser user = 1;
+}
+
+message UserResponse {
+    BaseUser user = 1;
+}

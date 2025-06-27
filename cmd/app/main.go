@@ -1,15 +1,27 @@
 package main
 
 import (
-	"net/http"
+	"log"
+	"strconv"
 
-	"github.com/labstack/echo/v4"
+	"github.com/pusrenk/auth-service/cmd/server"
+	"github.com/pusrenk/auth-service/configs"
 )
 
 func main() {
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
-	e.Logger.Fatal(e.Start(":1323"))
+	// Load configuration
+	cfg := configs.GetConfig()
+
+	// Create server
+	srv := server.NewServer(cfg)
+
+	// Setup dependencies
+	if err := srv.SetupDependencies(); err != nil {
+		log.Fatalf("Failed to setup dependencies: %v", err)
+	}
+
+	// Start server
+	if err := srv.Start(strconv.Itoa(cfg.App.Port)); err != nil {
+		log.Fatalf("Failed to start server: %v", err)
+	}
 }
