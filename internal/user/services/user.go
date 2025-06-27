@@ -26,7 +26,7 @@ func NewUserService(userRedisRepository repositories.UserRedisRepository) UserSe
 }
 
 func (s *userService) GetUserBySessionID(ctx context.Context, sessionID string) (*entities.User, error) {
-	s.logger.Debug("Getting user by session ID from repository",
+	s.logger.Info("Getting user by session ID from repository",
 		"session_id", sessionID,
 		"method", "GetUserBySessionID")
 
@@ -40,13 +40,13 @@ func (s *userService) GetUserBySessionID(ctx context.Context, sessionID string) 
 	}
 
 	if user != nil {
-		s.logger.Debug("Successfully retrieved user by session ID",
+		s.logger.Info("Successfully retrieved user by session ID",
 			"session_id", sessionID,
 			"user_id", user.ID,
 			"username", user.Username,
 			"method", "GetUserBySessionID")
 	} else {
-		s.logger.Debug("No user found for session ID",
+		s.logger.Info("No user found for session ID",
 			"session_id", sessionID,
 			"method", "GetUserBySessionID")
 	}
@@ -55,7 +55,7 @@ func (s *userService) GetUserBySessionID(ctx context.Context, sessionID string) 
 }
 
 func (s *userService) StoreUserSession(ctx context.Context, user *entities.User) error {
-	s.logger.Debug("Storing user session in repository",
+	s.logger.Info("Storing user session in repository",
 		"user_id", user.ID,
 		"username", user.Username,
 		"method", "StoreUserSession")
@@ -70,7 +70,7 @@ func (s *userService) StoreUserSession(ctx context.Context, user *entities.User)
 		return err
 	}
 
-	s.logger.Debug("Successfully stored user session",
+	s.logger.Info("Successfully stored user session",
 		"user_id", user.ID,
 		"username", user.Username,
 		"method", "StoreUserSession")
