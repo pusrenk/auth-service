@@ -1,0 +1,38 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+README_TESTING.md
+docs/
+
+# CI/CD
+.github/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Binaries
+auth-service
+auth-service_unix
+*.exe
+
+# Test files
+*_test.go
+coverage.out
+coverage.html
+
+# Development files
+*.log
+.env
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore 
