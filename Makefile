@@ -8,6 +8,16 @@ GOMOD=$(GOCMD) mod
 BINARY_NAME=auth-service
 BINARY_UNIX=$(BINARY_NAME)_unix
 
+DOCKER_USERNAME="rayprastya"
+IMAGE_NAME="pusrenk"
+TAG="auth-service"
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
 # Development commands
 .PHONY: run build clean test test-coverage test-race test-short deps mocks proto gen fmt add-domain
 
@@ -112,6 +122,20 @@ docker-build:
 
 docker-run:
 	docker run -p 50051:50051 $(BINARY_NAME)
+
+docker-push:
+	@echo -e "${YELLOW}Building Docker image...${NC}"
+	@docker build -t ${DOCKER_USERNAME}/${IMAGE_NAME}:${TAG} . && \
+		echo -e "${GREEN}Build successful!${NC}" && \
+		echo -e "${YELLOW}Tagging image...${NC}" && \
+		docker tag ${DOCKER_USERNAME}/${IMAGE_NAME}:${TAG} ${DOCKER_USERNAME}/${IMAGE_NAME}:${TAG} && \
+		echo -e "${YELLOW}Pushing to Docker Hub...${NC}" && \
+		docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:${TAG} && \
+		echo -e "${GREEN}Successfully pushed to Docker Hub!${NC}" && \
+		echo -e "${GREEN}Image: ${DOCKER_USERNAME}/${IMAGE_NAME}:${TAG}${NC}" || \
+		echo -e "${RED}Operation failed!${NC}" 
+
+
 
 # Help
 help:
